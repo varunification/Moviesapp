@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -6,7 +7,7 @@ import { Injectable } from '@angular/core';
 
 export class AuthService {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
 login(uname:string, password:string):number{
   if(uname ==='varun' && password==='admin'){
@@ -17,6 +18,10 @@ login(uname:string, password:string):number{
   }
 }
 
+
+logout():void{
+  this.router.navigate(['login']);
+}
 
 
 }
