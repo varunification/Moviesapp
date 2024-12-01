@@ -1,0 +1,32 @@
+.home-container {
+    display: flex;
+
+
+    .all-movies {
+        width: 75%;
+        min-height: calc(100vh - 80px);
+        border-right: 1px solid black;
+        padding: 20px 40px;
+        font-family: "Roboto", sans-serif;
+
+
+        .top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            h4 {
+                text-transform: uppercase;
+                font-weight: bold;
+                border-left: 5px solid #eeff00;
+                padding-left: 10px;
+            }
+            .view-all{
+                color:  #eeff00;
+                cursor: pointer;
+            }
+        }
+
+
+    }
+}
