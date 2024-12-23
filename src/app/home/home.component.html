@@ -1,24 +1,58 @@
 <app-header></app-header>
 <div class="home-container">
-
     <div class="all-movies">
         <div class="trending-movies">
             <div class="top">
                 <h4>Trending Movies</h4>
                 <div class="view-all">View All</div>
             </div>
-            <div class="movie-thumbnails">
-                <div class="movie">
-                    <div class="cover">
-                        <img src="">
+            <div class="movies-thumbnails">
+                <div class="movie" *ngFor="let movie of movies">
+                    <div class="cover" (click)="goToMovie('trending', movie.id.toString())">
+                        <img src="https://www.companyfolders.com/blog/media/2017/07/metropolis.jpg" height="100px" width="100px">
                     </div>
                     <div class="details">
-                        <div class="name"></div>
-                        <div class="rating"></div>
+                        <div class="name" (click)="goToMovie('trending', movie.id.toString())">{{movie.title}}</div>
+                        <div class="rating">
+                            <app-star-rating [rating]="movie.popularity" [isreadonly]="true"></app-star-rating>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="theatre-movies">
+            <div class="top">
+                <h4>Popular in Theatres</h4>
+                <div class="view-all">View All</div>
+            </div>
+            <div class="movies-thumbnails">
+                <div class="movie" *ngFor="let movie of movies">
+                    <div class="cover" (click)="goToMovie('theater', movie.id.toString())" >
+                        <img src="https://www.companyfolders.com/blog/media/2017/07/metropolis.jpg" alt="" height="100px" width="100px"/>
+                    </div>
+                    <div class="detail">
+                        <div class="name" (click)="goToMovie('theater', movie.id.toString())">{{ movie.original_title }}</div>
+                        <div class="rating">
+                            <span class="rating-value">{{ movie.popularity }}</span>
+                            <app-star-rating [rating]="movie.popularity" [isreadonly]="true"></app-star-rating>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="popular-movies"></div>
+
+    <!-- Popular Movies Section on the Right -->
+    <div class="popular-movies">
+        <h4>Popular Movies</h4>
+        <ul>
+            <li *ngFor="let movie of movies">
+                <div class="movie-name">{{ movie.title }}</div>
+                <div class="movie-rating">
+                    <app-star-rating [rating]="movie.popularity" [isreadonly]="true"></app-star-rating>
+                </div>
+            </li>
+        </ul>
+    </div>
 </div>
